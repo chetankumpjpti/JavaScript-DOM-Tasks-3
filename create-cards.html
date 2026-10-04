@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Cards</title>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        body{
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e0f2fe, #f0fdfa);
+            font-family: Arial, sans-serif;
+            padding-top: 40px;
+        }
+
+        button{
+            padding: 12px 22px;
+            background: linear-gradient(to right, #2563eb, #0ea5e9);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            margin: 10px 5px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 300ms ease;
+        }
+
+        button:hover{
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        button:active{
+            transform: scale(0.95);
+        }
+
+        #Btn2{
+            background: linear-gradient(to right, #ef4444, #f97316);
+        }
+
+        .container{
+            width: 700px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 50px auto;
+            padding: 25px;
+            justify-content: center;
+        }
+
+        .card{
+            width: 150px;
+            min-height: 130px;
+            padding: 20px;
+            background: linear-gradient(145deg, #0f766e, #14b8a6);
+            color: white;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            cursor: pointer;
+            transition: 300ms ease;
+        }
+
+        .card:hover{
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .card h4{
+            font-size: 20px;
+        }
+
+        .card p{
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="Btn">Create 5 Cards</button>
+    <button id="Btn2">Hide</button>
+
+    <div class="container"></div>
+
+
+    <script>
+
+        const container = document.querySelector(".container")
+        const Btn = document.querySelector("#Btn")
+        const Btn2 = document.querySelector("#Btn2")
+
+        let flag = 0
+
+        function demo() {
+
+            if (flag === 0) {
+
+                // First time only cards create honge
+                if (container.children.length === 0) {
+
+                    for (let i = 1; i <= 5; i++) {
+
+                        const div = document.createElement("div")
+
+                        div.classList.add("card")
+
+                        div.innerHTML = `<h4>Hello</h4><p>Students</p>`
+
+                        div.style.color = "white"
+
+                        container.append(div)
+                    }
+                }
+
+                // Hidden cards ko show karo
+                container.classList.remove("hide")
+
+                flag = 1
+            }
+        }
+
+        Btn.addEventListener("click", demo)
+
+
+        function hide() {
+
+            if (flag === 1) {
+
+                container.classList.add("hide")
+
+                flag = 0
+            }
+        }
+
+        Btn2.addEventListener("click", hide)
+
+    </script>
+
+</body>
+</html>
